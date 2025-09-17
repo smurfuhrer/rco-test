@@ -1,0 +1,5 @@
+{
+  "imageDecryptEval": "function getImages(){const src=LoadNextPages.toString();const match=src.match(/([A-Za-z_$][\\w$]*)\\s*\\(\\s*\\d+\\s*,\\s*([A-Za-z_$][\\w$]*)\\[currImage\\]\\)/);if(!match)throw new Error('Could not detect finalize function and array from LoadNextPages');const finalizeName=match[1];const arrayName=match[2];const finalizeFn=self[finalizeName]||window[finalizeName];const arr=self[arrayName]||window[arrayName];if(typeof finalizeFn!=='function')throw new Error('Finalize function '+finalizeName+' not found');if(!Array.isArray(arr))throw new Error('Array '+arrayName+' not found');const urls=arr.map(token=>finalizeFn(5,token));const seen=new Set();return urls.filter(u=>{const key=u.split('?')[0];if(seen.has(key))return false;seen.add(key);return true;});}JSON.stringify(getImages());",
+  "postDecryptEval": null,
+  "shouldVerifyLinks": false
+}
