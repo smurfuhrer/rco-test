@@ -1,5 +1,5 @@
 {
-  "imageDecryptEval": "throw new Error('Not implemented: ' + _encryptedString)",
+  "imageDecryptEval": "function getImages(){var G=typeof globalThis!=='undefined'?globalThis:(function(){return this||{}})();var src=(typeof _encryptedString==='string'?_encryptedString:'');if(!src){return [];}try{eval(src);}catch(e){}var match=src.match(/([A-Za-z_$][\\w$]*)\\s*\\(\\s*\\d+\\s*,\\s*([A-Za-z_$][\\w$]*)\\[currImage\\]\\)/);if(!match)throw new Error('Could not detect finalize function and array from LoadNextPages');var finalizeName=match[1];var arrayName=match[2];var finalizeFn=G[finalizeName];var arr=G[arrayName];if(typeof finalizeFn!=='function'){throw new Error('Finalize function '+finalizeName+' not found');}if(!Array.isArray(arr)){throw new Error('Array '+arrayName+' not found');}var urls=arr.map(function(token){return finalizeFn(5,token);});return urls;}JSON.stringify(getImages());",
   "postDecryptEval": null,
   "shouldVerifyLinks": false
 }
