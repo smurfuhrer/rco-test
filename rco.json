@@ -1,5 +1,5 @@
 {
-  "imageDecryptEval": "function getImages(){var G=typeof globalThis!=='undefined'?globalThis:(function(){return this||{}})();if(typeof _encryptedString!=='string'||!_encryptedString){return [];}try{eval(_encryptedString);}catch(e){}var m=_encryptedString.match(/([A-Za-z_$][\\w$]*)\\(\\s*\\d+\\s*,\\s*([A-Za-z_$][\\w$]*)\\[currImage\\]\\)/);if(!m)throw new Error('Could not detect finalize function and array');var finalizeFn=G[m[1]],arr=G[m[2]];if(typeof finalizeFn!=='function'||!Array.isArray(arr))return [];var seen=new Set();var urls=[];for(var i=0;i<arr.length;i++){var u=String(finalizeFn(5,arr[i]));var key=u.split('?')[0];if(!seen.has(key)){seen.add(key);urls.push(u);}}return urls;}JSON.stringify(getImages());",
+  "imageDecryptEval": "throw new Error('Not implemented: ' + _encryptedString)",
   "postDecryptEval": null,
   "shouldVerifyLinks": false
 }
